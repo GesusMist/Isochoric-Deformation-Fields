@@ -1,5 +1,9 @@
 opt_type: "movies"
 
+opt:
+  vol_weight: 0.0
+  vol_log_eps: 1.0e-8
+
 optimizer:
   name: "adamw"
   lr: 0.0004

@@ -600,6 +600,8 @@ def main():
                 opacity_loss = outputs["opacity_loss"] if "opacity_loss" in outputs else None
                 motion_loss = outputs["motion_loss"] if "motion_loss" in outputs else None
                 motion_reg = outputs["motion_reg"] if "motion_reg" in outputs else None
+                vol_loss = outputs["vol_loss"] if "vol_loss" in outputs else None
+                vol_drift = outputs["vol_drift"] if "vol_drift" in outputs else None
                 gaussian_usage = outputs["gaussian_usage"] if "gaussian_usage" in outputs else None
                 voxel_ratio = outputs["voxel_ratio"] if "voxel_ratio" in outputs else None
 
@@ -632,6 +634,10 @@ def main():
                     motion_loss = accelerator.gather(motion_loss.detach()).mean()
                 if motion_reg is not None:
                     motion_reg = accelerator.gather(motion_reg.detach()).mean()
+                if vol_loss is not None:
+                    vol_loss = accelerator.gather(vol_loss.detach()).mean()
+                if vol_drift is not None:
+                    vol_drift = accelerator.gather(vol_drift.detach()).mean()
                 if gaussian_usage is not None:
                     gaussian_usage = accelerator.gather(gaussian_usage.detach()).mean()
                 if voxel_ratio is not None:
@@ -648,10 +654,16 @@ def main():
                 progress_bar.set_postfix(**logs)
                 progress_bar.update(1)
 
+                extra_logs = []
+                if vol_loss is not None:
+                    extra_logs.append(f"vol_loss: {vol_loss.item():.4f}")
+                if vol_drift is not None:
+                    extra_logs.append(f"vol_drift: {vol_drift.item():.4f}")
                 logger.info(
                     f"[{global_update_step:06d} / {total_updated_steps:06d}] " +
                     f"psnr: {logs['psnr']:.4f}, ssim: {logs['ssim']:.4f}, lpips: {logs['lpips']:.4f}, " +
-                    f"loss: {logs['loss']:.4f}, lr: {logs['lr']:.2e}"
+                    f"loss: {logs['loss']:.4f}, lr: {logs['lr']:.2e}" +
+                    (", " + ", ".join(extra_logs) if len(extra_logs) > 0 else "")
                 )
 
                 # Log the training progress
@@ -676,6 +688,10 @@ def main():
                             wandb.log({"training/motion_loss": motion_loss.item()}, step=global_update_step)
                         if motion_reg is not None:
                             wandb.log({"training/motion_reg": motion_reg.item()}, step=global_update_step)
+                        if vol_loss is not None:
+                            wandb.log({"training/vol_loss": vol_loss.item()}, step=global_update_step)
+                        if vol_drift is not None:
+                            wandb.log({"training/vol_drift": vol_drift.item()}, step=global_update_step)
                         if gaussian_usage is not None:
                             wandb.log({"training/gaussian_usage": gaussian_usage.item()}, step=global_update_step)
                         if voxel_ratio is not None:
@@ -742,6 +758,8 @@ def main():
                             val_opacity_loss = val_outputs["opacity_loss"] if "opacity_loss" in val_outputs else None
                             val_motion_loss = val_outputs["motion_loss"] if "motion_loss" in val_outputs else None
                             val_motion_reg = val_outputs["motion_reg"] if "motion_reg" in val_outputs else None
+                            val_vol_loss = val_outputs["vol_loss"] if "vol_loss" in val_outputs else None
+                            val_vol_drift = val_outputs["vol_drift"] if "vol_drift" in val_outputs else None
                             val_gaussian_usage = val_outputs["gaussian_usage"] if "gaussian_usage" in val_outputs else None
                             val_voxel_ratio = val_outputs["voxel_ratio"] if "voxel_ratio" in val_outputs else None
 
@@ -760,6 +778,10 @@ def main():
                                 val_motion_loss = accelerator.gather_for_metrics(val_motion_loss).mean()
                             if val_motion_reg is not None:
                                 val_motion_reg = accelerator.gather_for_metrics(val_motion_reg).mean()
+                            if val_vol_loss is not None:
+                                val_vol_loss = accelerator.gather_for_metrics(val_vol_loss).mean()
+                            if val_vol_drift is not None:
+                                val_vol_drift = accelerator.gather_for_metrics(val_vol_drift).mean()
                             if val_gaussian_usage is not None:
                                 val_gaussian_usage = accelerator.gather_for_metrics(val_gaussian_usage).mean()
                             if val_voxel_ratio is not None:
@@ -790,6 +812,10 @@ def main():
                                 all_val_metrics.setdefault("motion_loss", []).append(val_motion_loss)
                             if val_motion_reg is not None:
                                 all_val_metrics.setdefault("motion_reg", []).append(val_motion_reg)
+                            if val_vol_loss is not None:
+                                all_val_metrics.setdefault("vol_loss", []).append(val_vol_loss)
+                            if val_vol_drift is not None:
+                                all_val_metrics.setdefault("vol_drift", []).append(val_vol_drift)
                             if val_gaussian_usage is not None:
                                 all_val_metrics.setdefault("gaussian_usage", []).append(val_gaussian_usage)
                             if val_voxel_ratio is not None:
@@ -803,12 +829,19 @@ def main():
                     for k, v in all_val_metrics.items():
                         all_val_metrics[k] = torch.tensor(v).mean()
 
+                    extra_val_logs = []
+                    if "vol_loss" in all_val_metrics:
+                        extra_val_logs.append(f"vol_loss: {all_val_metrics['vol_loss'].item():.4f}")
+                    if "vol_drift" in all_val_metrics:
+                        extra_val_logs.append(f"vol_drift: {all_val_metrics['vol_drift'].item():.4f}")
                     logger.info(
                         f"Eval [{global_update_step:06d} / {total_updated_steps:06d}] " +
                         f"psnr: {all_val_metrics['psnr'].item():.4f}, " +
                         f"ssim: {all_val_metrics['ssim'].item():.4f}, " +
                         f"lpips: {all_val_metrics['lpips'].item():.4f}, " +
-                        f"loss: {all_val_metrics['loss'].item():.4f}\n"
+                        f"loss: {all_val_metrics['loss'].item():.4f}" +
+                        (", " + ", ".join(extra_val_logs) if len(extra_val_logs) > 0 else "") +
+                        "\n"
                     )
 
                     outputs = accelerator.gather(outputs)

@@ -130,6 +130,7 @@ class GaussianModel:
             opacity = inverse_sigmoid(torch.from_numpy(opacity)).numpy()
             scale = torch.log(torch.from_numpy(scale) + 1e-8).numpy()
             sh = (torch.from_numpy(sh) - 0.5).numpy() / 0.28209479177387814
+        sh = rearrange(sh, "n k rgb -> n (k rgb)")
 
         dtype_full = [(attribute, "f4") for attribute in self._construct_list_of_attributes()]
         dtype_full.extend([("red", "u1"), ("green", "u1"), ("blue", "u1")])

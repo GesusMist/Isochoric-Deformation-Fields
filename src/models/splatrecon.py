@@ -279,6 +279,34 @@ class SplatRecon(nn.Module):
             outputs["opacity_loss"] = opacity_loss = torch.abs(self.gs_renderer.opacity_activation(opacity)).mean(dim=(1, 2, 3, 4, 5))  # (B,)
             loss += self.opt.opacity_weight * opacity_loss
 
+        # (Optional) Volume consistency loss on time-varying Gaussian scales
+        if "scale" in model_outputs:
+            if pred_motion_splat is not None:
+                deformed_scale = torch.stack([
+                    self.gs_renderer.scale_activation(pred_motion_splat[i]["motion_scale"])
+                    for i in range(F_out)
+                ], dim=1)  # (B, F_out, F_in, 3, H, W)
+            elif self.opt.dynamic_splat:
+                deformed_scale = torch.stack([
+                    self.gs_renderer.scale_activation(model_outputs["dynamic_splat"][i]["scale"])
+                    for i in range(F_out)
+                ], dim=1)  # (B, F_out, F_in, 3, H, W)
+            else:
+                deformed_scale = None
+
+            if deformed_scale is not None:
+                canonical_scale = self.gs_renderer.scale_activation(model_outputs["scale"]).unsqueeze(1)  # (B, 1, F_in, 3, H, W)
+                canonical_log_volume = torch.log(canonical_scale.clamp_min(self.opt.vol_log_eps)).sum(dim=3)  # (B, 1, F_in, H, W)
+                deformed_log_volume = torch.log(deformed_scale.clamp_min(self.opt.vol_log_eps)).sum(dim=3)  # (B, F_out, F_in, H, W)
+                log_volume_delta = deformed_log_volume - canonical_log_volume  # (B, F_out, F_in, H, W)
+                log_volume_gap = torch.abs(log_volume_delta)  # (B, F_out, F_in, H, W)
+
+                outputs["vol_loss"] = vol_loss = log_volume_gap.mean(dim=(1, 2, 3, 4))  # (B,)
+                outputs["vol_drift"] = torch.abs(torch.exp(log_volume_delta.detach()) - 1.).mean(dim=(1, 2, 3, 4))  # (B,)
+
+                if self.opt.vol_weight > 0.:
+                    loss += self.opt.vol_weight * vol_loss
+
         # (Optional) Motion loss
         if self.opt.motion_weight > 0. and pred_motions is not None:
             tracks_world = data["track_world"]  # a list of (F, N, 3)

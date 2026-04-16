@@ -140,6 +140,8 @@ class Options:
     motion_conf_alpha: float = 0.  # cf. DUSt3R
             ### regularization
     motion_reg_weight: float = 0.
+    vol_weight: float = 0.
+    vol_log_eps: float = 1e-8
         ## Opacity loss
     opacity_weight: float = 0.
     prune_ratio: float = 0.6
