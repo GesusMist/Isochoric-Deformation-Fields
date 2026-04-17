@@ -1,0 +1,11 @@
+{
+  "name": "motocross-bumps",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 14.68818473815918,
+  "ssim": 0.6692330837249756,
+  "lpips": 0.3265416920185089,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}

@@ -3,7 +3,6 @@ __pycache__/
 resources/
 build/
 *.egg-info/
-out/
 temp/
 log/
 temp*/
@@ -13,3 +12,4 @@ temp*.*
 *.so
 *.tar*
 *.vsix
+datasets/

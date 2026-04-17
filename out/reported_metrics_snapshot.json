@@ -1,0 +1,25 @@
+{
+  "checkpoint": "resources/movies_ckpt.safetensors",
+  "metric_definition": "held-out frame reconstruction using first 5 frames as input and last 8 frames as targets",
+  "reported_samples": [
+    {
+      "name": "motocross-bumps",
+      "psnr": 14.68818473815918,
+      "ssim": 0.6692330837249756,
+      "lpips": 0.3265416920185089,
+      "source_file": "out/motocross-bumps/recon_metrics.json"
+    },
+    {
+      "name": "horsejump-high",
+      "psnr": 9.98382568359375,
+      "ssim": 0.45674586296081543,
+      "lpips": 0.4386557936668396,
+      "source_file": "out/horsejump-high/recon_metrics.json"
+    }
+  ],
+  "two_sample_mean": {
+    "psnr": 12.336005210876465,
+    "ssim": 0.5629894733428955,
+    "lpips": 0.38259874284267426
+  }
+}

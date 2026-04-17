@@ -1,0 +1,96 @@
+{
+  "checkpoint": "resources/movies_ckpt.safetensors",
+  "dataset_repo": "chenguolin/re_tt",
+  "dataset_part": "re_tt.part0.tar",
+  "num_videos_evaluated": 3,
+  "metric_definition": "held-out frame reconstruction on streamed RealEstate10K clips using embedded per-frame poses",
+  "sampling_protocol": "match Re10kDataset eval-style uniform frame selection from the first max_gap clip",
+  "preprocessing_note": "uses the same resize/center-crop intrinsics adjustment as BaseDataset eval; depth and motion supervision are disabled",
+  "mean_psnr": 11.904647668202719,
+  "mean_ssim": 0.37504298488299054,
+  "mean_ssim_x100": 37.50429848829905,
+  "mean_lpips": 0.3890429933865865,
+  "results": [
+    {
+      "uid": "000c3ab189999a83",
+      "num_frames_available": 279,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "input_indices": [
+        0,
+        42,
+        84,
+        126,
+        169
+      ],
+      "target_indices": [
+        0,
+        24,
+        48,
+        72,
+        96,
+        120,
+        144,
+        169
+      ],
+      "psnr": 12.909750938415527,
+      "ssim": 0.36496323347091675,
+      "ssim_x100": 36.496323347091675,
+      "lpips": 0.4310576319694519
+    },
+    {
+      "uid": "000db54a47bd43fe",
+      "num_frames_available": 237,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "input_indices": [
+        0,
+        42,
+        84,
+        126,
+        169
+      ],
+      "target_indices": [
+        0,
+        24,
+        48,
+        72,
+        96,
+        120,
+        144,
+        169
+      ],
+      "psnr": 7.223236560821533,
+      "ssim": 0.3339269161224365,
+      "ssim_x100": 33.39269161224365,
+      "lpips": 0.5391976833343506
+    },
+    {
+      "uid": "000eb6240f06dd5a",
+      "num_frames_available": 46,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "input_indices": [
+        0,
+        11,
+        22,
+        33,
+        45
+      ],
+      "target_indices": [
+        0,
+        6,
+        12,
+        19,
+        25,
+        32,
+        38,
+        45
+      ],
+      "psnr": 15.580955505371094,
+      "ssim": 0.4262388050556183,
+      "ssim_x100": 42.62388050556183,
+      "lpips": 0.19687366485595703
+    }
+  ]
+}

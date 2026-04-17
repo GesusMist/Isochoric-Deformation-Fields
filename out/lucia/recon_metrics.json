@@ -1,0 +1,11 @@
+{
+  "name": "lucia",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 12.97646713256836,
+  "ssim": 0.5835955142974854,
+  "lpips": 0.3849421739578247,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}

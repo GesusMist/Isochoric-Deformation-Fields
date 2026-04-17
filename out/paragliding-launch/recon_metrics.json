@@ -1,0 +1,11 @@
+{
+  "name": "paragliding-launch",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 10.761666297912598,
+  "ssim": 0.49165189266204834,
+  "lpips": 0.41824305057525635,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}

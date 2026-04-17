@@ -1,0 +1,11 @@
+{
+  "name": "horsejump-high",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 9.98382568359375,
+  "ssim": 0.45674586296081543,
+  "lpips": 0.4386557936668396,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}

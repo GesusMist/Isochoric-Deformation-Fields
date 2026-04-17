@@ -1,0 +1,11 @@
+{
+  "name": "tennis",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 12.835740089416504,
+  "ssim": 0.5877186059951782,
+  "lpips": 0.34692150354385376,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}

@@ -1,0 +1,131 @@
+{
+  "checkpoint": "resources/movies_ckpt.safetensors",
+  "num_samples": 10,
+  "sample_names": [
+    "breakdance-flare",
+    "drift-straight",
+    "flamingo",
+    "horsejump-high",
+    "lucia",
+    "motocross-bumps",
+    "paragliding-launch",
+    "soapbox",
+    "stroller",
+    "tennis"
+  ],
+  "mean_psnr": 13.288204002380372,
+  "mean_ssim": 0.5382676810026169,
+  "mean_lpips": 0.38180733323097227,
+  "results": [
+    {
+      "name": "breakdance-flare",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 18.650800704956055,
+      "ssim": 0.7204229235649109,
+      "lpips": 0.25661104917526245,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "drift-straight",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 10.318058967590332,
+      "ssim": 0.48846927285194397,
+      "lpips": 0.4019455313682556,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "flamingo",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 15.739343643188477,
+      "ssim": 0.38942742347717285,
+      "lpips": 0.4458262026309967,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "horsejump-high",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 9.98382568359375,
+      "ssim": 0.45674586296081543,
+      "lpips": 0.4386557936668396,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "lucia",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 12.97646713256836,
+      "ssim": 0.5835955142974854,
+      "lpips": 0.3849421739578247,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "motocross-bumps",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 14.68818473815918,
+      "ssim": 0.6692330837249756,
+      "lpips": 0.3265416920185089,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "paragliding-launch",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 10.761666297912598,
+      "ssim": 0.49165189266204834,
+      "lpips": 0.41824305057525635,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "soapbox",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 12.135053634643555,
+      "ssim": 0.5105416178703308,
+      "lpips": 0.37124383449554443,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "stroller",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 14.792899131774902,
+      "ssim": 0.4848706126213074,
+      "lpips": 0.42714250087738037,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    },
+    {
+      "name": "tennis",
+      "num_total_frames": 13,
+      "num_input_frames": 5,
+      "num_target_frames": 8,
+      "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+      "psnr": 12.835740089416504,
+      "ssim": 0.5877186059951782,
+      "lpips": 0.34692150354385376,
+      "checkpoint": "resources/movies_ckpt.safetensors"
+    }
+  ]
+}

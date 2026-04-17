@@ -1,0 +1,123 @@
+{
+  "scene": "Jumping",
+  "checkpoint": "resources/movies_ckpt.safetensors",
+  "data_root": "datasets/nvidia",
+  "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+  "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+  "protocol_kind": "round_robin_input_fixed_camera_target",
+  "sampling_protocol": {
+    "num_input_frames": 12,
+    "input_camera_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "input_time_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "eval_camera_id": 1,
+    "target_time_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "requested_image_size": [
+      379,
+      672
+    ],
+    "effective_image_size": [
+      378,
+      672
+    ]
+  },
+  "assumptions": [
+    "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+    "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+    "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+    "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+    "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+    "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+  ],
+  "round_robin_alignment_check": {
+    "expected_time_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "best_matching_time_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "all_best_matches_follow_round_robin_diagonal": true,
+    "best_match_mse_per_camera": [
+      0.03999871388077736,
+      0.082539863884449,
+      0.09448302537202835,
+      0.08878407627344131,
+      0.09762410074472427,
+      0.1034400686621666,
+      0.12669752538204193,
+      0.15356674790382385,
+      0.1627121865749359,
+      0.19080118834972382,
+      0.10498199611902237,
+      0.13104809820652008
+    ],
+    "mean_best_match_mse": 0.11472313261280458
+  },
+  "metrics": {
+    "psnr": 20.033832550048828,
+    "ssim": 0.8118910789489746,
+    "ssim_x100": 81.18910789489746,
+    "lpips": 0.19766899943351746
+  },
+  "elapsed_sec": 732.2360880869996
+}

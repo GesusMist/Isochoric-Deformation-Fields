@@ -1,0 +1,11 @@
+{
+  "name": "flamingo",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 15.739343643188477,
+  "ssim": 0.38942742347717285,
+  "lpips": 0.4458262026309967,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}

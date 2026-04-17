@@ -1,0 +1,1008 @@
+{
+  "scene_count_completed": 8,
+  "completed_scenes": [
+    "Balloon1",
+    "Balloon2",
+    "DynamicFace",
+    "Jumping",
+    "Skating",
+    "Teadybear",
+    "Truck",
+    "Umbrella"
+  ],
+  "missing_scenes": [
+    "Playground"
+  ],
+  "scenes": [
+    {
+      "scene": "Balloon1",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          59.35210037231445,
+          57.06011962890625,
+          47.63418197631836,
+          55.59391403198242,
+          50.16655731201172,
+          56.20924758911133,
+          43.283790588378906,
+          59.141632080078125,
+          47.70298767089844,
+          61.33617401123047,
+          59.698822021484375,
+          51.02626419067383
+        ],
+        "mean_best_match_mse": 54.01714928944906
+      },
+      "metrics": {
+        "psnr": 13.04638671875,
+        "ssim": 0.5773744583129883,
+        "ssim_x100": 57.73744583129883,
+        "lpips": 0.36194750666618347
+      },
+      "elapsed_sec": 1746.770747083001
+    },
+    {
+      "scene": "Balloon2",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          51.077022552490234,
+          54.68842697143555,
+          48.638526916503906,
+          56.4715576171875,
+          53.96677017211914,
+          54.92594528198242,
+          50.39241409301758,
+          56.159141540527344,
+          49.83753204345703,
+          56.28556442260742,
+          52.282020568847656,
+          49.87670135498047
+        ],
+        "mean_best_match_mse": 52.88346862792969
+      },
+      "metrics": {
+        "psnr": 10.163654327392578,
+        "ssim": 0.34041160345077515,
+        "ssim_x100": 34.041160345077515,
+        "lpips": 0.4949590861797333
+      },
+      "elapsed_sec": 1217.5757843560004
+    },
+    {
+      "scene": "DynamicFace",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          9,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": false,
+        "best_match_mse_per_camera": [
+          0.04055362567305565,
+          0.03778935223817825,
+          0.06019611656665802,
+          0.04422968253493309,
+          0.057003602385520935,
+          0.03617412596940994,
+          0.06010095030069351,
+          0.05947273597121239,
+          0.05825488641858101,
+          0.07049897313117981,
+          0.0682542473077774,
+          0.0649794265627861
+        ],
+        "mean_best_match_mse": 0.05479231042166551
+      },
+      "metrics": {
+        "psnr": 13.878422737121582,
+        "ssim": 0.8100818395614624,
+        "ssim_x100": 81.00818395614624,
+        "lpips": 0.17260655760765076
+      },
+      "elapsed_sec": 1311.7145294790007
+    },
+    {
+      "scene": "Jumping",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          0.03999871388077736,
+          0.082539863884449,
+          0.09448302537202835,
+          0.08878407627344131,
+          0.09762410074472427,
+          0.1034400686621666,
+          0.12669752538204193,
+          0.15356674790382385,
+          0.1627121865749359,
+          0.19080118834972382,
+          0.10498199611902237,
+          0.13104809820652008
+        ],
+        "mean_best_match_mse": 0.11472313261280458
+      },
+      "metrics": {
+        "psnr": 20.033832550048828,
+        "ssim": 0.8118910789489746,
+        "ssim_x100": 81.18910789489746,
+        "lpips": 0.19766899943351746
+      },
+      "elapsed_sec": 732.2360880869996
+    },
+    {
+      "scene": "Skating",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          0.02917245402932167,
+          0.03851723298430443,
+          0.06007073074579239,
+          0.05394740402698517,
+          0.036516204476356506,
+          0.05301826074719429,
+          0.06887538731098175,
+          0.0646701380610466,
+          0.06056712940335274,
+          0.07623714208602905,
+          0.018822016194462776,
+          0.029372427612543106
+        ],
+        "mean_best_match_mse": 0.04914887730653087
+      },
+      "metrics": {
+        "psnr": 18.201507568359375,
+        "ssim": 0.8656451106071472,
+        "ssim_x100": 86.56451106071472,
+        "lpips": 0.1723249852657318
+      },
+      "elapsed_sec": 1352.7621189670003
+    },
+    {
+      "scene": "Teadybear",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          76.17277526855469,
+          76.47584533691406,
+          65.11356353759766,
+          74.89151000976562,
+          71.451904296875,
+          82.13912200927734,
+          70.14413452148438,
+          83.89075469970703,
+          75.66486358642578,
+          88.7213363647461,
+          61.96215057373047,
+          70.56022644042969
+        ],
+        "mean_best_match_mse": 74.76568222045898
+      },
+      "metrics": {
+        "psnr": 11.937767028808594,
+        "ssim": 0.6044516563415527,
+        "ssim_x100": 60.44516563415527,
+        "lpips": 0.35449108481407166
+      },
+      "elapsed_sec": 664.8226349859997
+    },
+    {
+      "scene": "Truck",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          0.01773983985185623,
+          0.01048996951431036,
+          0.021693030372262,
+          0.016523277387022972,
+          0.016509773209691048,
+          0.018920395523309708,
+          0.01317451149225235,
+          0.021691743284463882,
+          0.017492283135652542,
+          0.01937178522348404,
+          0.017352109774947166,
+          0.015616641379892826
+        ],
+        "mean_best_match_mse": 0.017214613345762093
+      },
+      "metrics": {
+        "psnr": 10.596747398376465,
+        "ssim": 0.31326383352279663,
+        "ssim_x100": 31.326383352279663,
+        "lpips": 0.5454213619232178
+      },
+      "elapsed_sec": 931.5846379100003
+    },
+    {
+      "scene": "Umbrella",
+      "checkpoint": "resources/movies_ckpt.safetensors",
+      "data_root": "datasets/nvidia",
+      "metric_definition": "NVIDIA dynamic scene benchmark local eval with round-robin source frames and a fixed target camera over time",
+      "metric_scope": "full-frame RGB metrics without dynamic-object masks",
+      "protocol_kind": "round_robin_input_fixed_camera_target",
+      "sampling_protocol": {
+        "num_input_frames": 12,
+        "input_camera_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "input_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "eval_camera_id": 1,
+        "target_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "requested_image_size": [
+          379,
+          672
+        ],
+        "effective_image_size": [
+          378,
+          672
+        ]
+      },
+      "assumptions": [
+        "Uses the official Yoon et al. NVIDIA dynamic scene archive layout with input_images/, multiview_GT/, and calibration/.",
+        "Interprets input_images/camXX.jpg as the round-robin source frame from camera XX at timestep XX.",
+        "Evaluates a fixed target camera across all 12 timesteps, following the DynNeRF / BTimer-style NVIDIA protocol.",
+        "Rescales images and camera intrinsics to the nearest VGGT patch-compatible resolution not exceeding the requested size.",
+        "Does not use the provided dynamic-object foreground masks when computing metrics, matching the MoVieS paper note that no video masks are used in these experiments.",
+        "Canonicalizes poses by the first source camera before inference, matching the repo's other posed-video inference utilities."
+      ],
+      "round_robin_alignment_check": {
+        "expected_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "best_matching_time_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "all_best_matches_follow_round_robin_diagonal": true,
+        "best_match_mse_per_camera": [
+          75.99396514892578,
+          79.79481506347656,
+          63.81525802612305,
+          78.38732147216797,
+          71.03575897216797,
+          72.73268127441406,
+          65.58492279052734,
+          78.52186584472656,
+          72.62841033935547,
+          78.94995880126953,
+          75.39013671875,
+          69.70342254638672
+        ],
+        "mean_best_match_mse": 73.54487641652425
+      },
+      "metrics": {
+        "psnr": 9.911588668823242,
+        "ssim": 0.35329973697662354,
+        "ssim_x100": 35.32997369766235,
+        "lpips": 0.4513189196586609
+      },
+      "elapsed_sec": 362.4299300980001
+    }
+  ],
+  "overall_mean_psnr": 13.471238374710083,
+  "overall_mean_ssim": 0.5845524147152901,
+  "overall_mean_ssim_x100": 58.45524147152901,
+  "overall_mean_lpips": 0.3438423126935959,
+  "status": "partial",
+  "note": "Playground did not complete in the available runtime window and needs a separate follow-up run."
+}

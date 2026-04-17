@@ -1,0 +1,11 @@
+{
+  "name": "breakdance-flare",
+  "num_total_frames": 13,
+  "num_input_frames": 5,
+  "num_target_frames": 8,
+  "metric_definition": "held-out frame reconstruction using first frames as input and last frames as targets",
+  "psnr": 18.650800704956055,
+  "ssim": 0.7204229235649109,
+  "lpips": 0.25661104917526245,
+  "checkpoint": "resources/movies_ckpt.safetensors"
+}
